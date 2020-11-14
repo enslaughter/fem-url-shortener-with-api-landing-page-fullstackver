@@ -1,0 +1,181 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <script
+      src="https://kit.fontawesome.com/553cd43dfd.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
+  </head>
+  <body>
+    <div class="page-header">
+      <div class="header-left">
+        <img src="/images/logo.svg" alt="Shortly Logo" />
+        <a href="#" class="header-link">Features</a>
+        <a href="#" class="header-link">Pricing</a>
+        <a href="#" class="header-link">Resources</a>
+      </div>
+      <div class="header-right">
+        <a href="#" class="header-link">Login</a>
+        <button class="cta-button">Sign Up</button>
+      </div>
+    </div>
+
+    <div class="page-intro">
+      <div class="intro-text">
+        <h1 class="intro-header">More than just shorter links</h1>
+
+        <p class="intro-body">
+          Build your brand’s recognition and get detailed insights on how your
+          links are performing.
+        </p>
+
+        <button class="cta-button intro-button">Get Started</button>
+      </div>
+      <img class="intro-image" src="/images/illustration-working.svg" alt="Working">
+    </div>
+
+    <div class="page-shortener">
+      <form class="shortener-form" action="/" method="post">
+        <input
+          type="text"
+          class="shortener-input"
+          name="url"
+          placeholder="Shorten a link here..."
+        />
+        <button type="submit" class="shortener-button" name="button">
+          Shorten It!
+        </button>
+      </form>
+    </div>
+
+    <div class="page-features">
+      <div class="urls-container">
+        <% urls.forEach(function(index){ %>
+          <div class="generated-url">
+            <p class="url-origin"><%=index.original_url%></p>
+            <div class="url-result">
+              <p class="url-shortened"><%=index.short_url%></p>
+              <input type="text" value="<%=index.short_url%>" style="position: absolute; z-index: -1;">
+              <button class="copy-button" type="button" onClick="copyLink(this)">Copy</button>
+            </div>
+          </div>
+        <%});%>
+      </div>
+      <div class="features-header">
+        <h2>Advanced Statistics</h2>
+
+        <p>
+          Track how your links are performing across the web with our advanced
+          statistics dashboard.
+        </p>
+      </div>
+
+      <div class="features-container">
+        <div class="feature">
+          <h3>Brand Recognition</h3>
+
+          <p>
+            Boost your brand recognition with each click. Generic links don’t
+            mean a thing. Branded links help instil confidence in your content.
+          </p>
+        </div>
+
+        <div class="feature-divider"></div>
+
+        <div class="feature">
+          <h3>Detailed Records</h3>
+
+          <p>
+            Gain insights into who is clicking your links. Knowing when and
+            where people engage with your content helps inform better decisions.
+          </p>
+        </div>
+
+        <div class="feature-divider"></div>
+
+        <div class="feature">
+          <h3>Fully Customizable</h3>
+
+          <p>
+            Improve brand awareness and content discoverability through
+            customizable links, supercharging audience engagement.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-cta">
+      <h2 style="color: white;">Boost your links today</h2>
+      <button class="cta-button">Get Started</button>
+    </div>
+
+    <div class="page-footer">
+      <div class="footer-left">
+        <img src="/images/logo-white.svg" alt="Shortly Logo">
+      </div>
+      <div class="footer-right">
+        <div class="footer-link-list">
+          <h4>Features</h4>
+          <a href="#" class="footer-link">Link Shortening</a>
+          <a href="#" class="footer-link">Branded Links</a>
+          <a href="#" class="footer-link">Analytics</a>
+        </div>
+        <div class="footer-link-list">
+          <h4>Resources</h4>
+          <a href="#" class="footer-link">Blog</a>
+          <a href="#" class="footer-link">Developers</a>
+          <a href="#" class="footer-link">Support</a>
+        </div>
+        <div class="footer-link-list">
+          <h4>Company</h4>
+          <a href="#" class="footer-link">About</a>
+          <a href="#" class="footer-link">Our Team</a>
+          <a href="#" class="footer-link">Careers</a>
+          <a href="#" class="footer-link">Contact</a>
+        </div>
+        <div class="footer-social-icons">
+          <i class="footer-icon fab fa-facebook"></i>
+          <i class="footer-icon fab fa-twitter"></i>
+          <i class="footer-icon fab fa-pinterest"></i>
+          <i class="footer-icon fab fa-instagram"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Eli Slaughter</a>.
+    </div>
+    <script>
+      function copyLink(copyButton){
+        let textPlaceholder = copyButton.previousSibling;
+        let copyURL = textPlaceholder.previousSibling;
+        copyURL.select();
+        copyURL.setSelectionRange(0,100);
+        document.execCommand("copy");
+        copyButton.classList.add("button-copied");
+
+        copyButton.innerHTML = "Copied!";
+      }
+    </script>
+  </body>
+</html>
